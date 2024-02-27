@@ -1,11 +1,12 @@
 import requests
+import nltk
+
 
 def acharPartido(p):
-    c = 0
-    r = "https://dadosabertos.camara.leg.br/api/v2/deputados?ordem=ASC&ordenarPor=nome"
-    resp = requests.get(r).json()
-    for d in resp["dados"]:
-        if d["nome"] == (p):
-            c += 1
-    return(c)
+    l = ()
+    r = requests.get("https://dadosabertos.camara.leg.br/api/v2/blocos?ordem=ASC&ordenarPor=nome").json()
+    for d in r["dados"]:
+            l.__add__(d["nome"]) and l.append(d["id"])
+    return(l)
+
 print(acharPartido("Aécio Neves"))
